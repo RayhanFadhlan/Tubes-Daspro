@@ -12,45 +12,45 @@
 #         role[count] = row[2]
 #         count+=1
 from globalvar import *
-
+import globalvar2
 sudahlogin = False
+
 def login():
-    global listuseractive
-    global roleactive
     global sudahlogin
+    global roleactive
+    global useractive
     if(sudahlogin):
         print("Login gagal!")
-        print(f"Anda telah login dengan listusername {listuseractive}, silahkan lakukan “logout” ")
+        print(f"Anda telah login dengan username {useractive}, silahkan lakukan “logout” ")
         print("sebelum melakukan login kembali.")
         return
     else:
-        checklistusername = input("listusername: ")
-        checklistpassword = input("listpassword: ")
+        checkusername = input("username: ")
+        checkpassword = input("password: ")
         for i in range (102):
-            if(checklistusername == listuser[i]):
-                
-                if(checklistpassword == listpassword[i]):
-                    print(f"Selamat datang, {checklistusername}!")
+            if(checkusername == listuser[i]):
+                if(checkpassword == listpassword[i]):
+                    print(f"Selamat datang, {checkusername}!")
                     print("Masukkan command “help” untuk daftar command yang dapat kamu panggil.")
-                    listuseractive = checklistusername
-            
+                    globalvar2.useractive = checkusername
                     roleactive = listrole[i]
                     sudahlogin = True
+                    
                     return
                 else:
-                    print("listpassword salah!")
+                    print("password salah!")
                 return
-        print("listusername tidak terdaftar!")
+        print("username tidak terdaftar!")
         return
-
+        
 
 def logout():
     global roleactive
-    global listuseractive
+    global useractive
     global sudahlogin
     if(sudahlogin==True):
         roleactive = False
-        listuseractive = False
+        useractive = False
         sudahlogin = False
     else:
         print("Logout gagal!")

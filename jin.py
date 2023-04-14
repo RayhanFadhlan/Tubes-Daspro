@@ -1,32 +1,18 @@
 from globalvar import *
-def summonjin():
-    if(cekisiarray(listuser) ==102):
-        print("Jumlah Jin telah maksimal! (100 jin). Bandung tidak dapat men-summon lebih dari itu")
-    else:
-        print("Jenis jin yang dapat dipanggil:")
-        print(" (1) Pengumpul - Bertugas mengumpulkan bahan bangunan")
-        print(" (2) Pembangun - Bertugas membangun candi")
 
-        pilihan = input("Masukkan nomor jenis jin yang ingin dipanggil: ")
-        if(pilihan == "1"):
-            role = "pengumpul"
-            cetakjin(role)
-        elif(pilihan == "2"):
-            role = "pembangun"
-            cetakjin(role)
-        else:
-            print(f"Tidak ada jenis jin bernomor {pilihan}!")
             
 
 def hapusjin():
     username = input("Masukkan username jin :")
-    if(usertersedia(username)):
-        pilihan = input("Apakah anda yakin ingin menghapus jin dengan username Jin1 (Y/N)?")
+    if(not usertersedia(username)):
+        pilihan = input(f"Apakah anda yakin ingin menghapus jin dengan username {username} (Y/N)?")
         if(pilihan == "Y"):
             hapususer(username)
             print(f"Jin {username} berhasil dihapus")
         elif(pilihan == "N"):
             print("Tidak ada jin dengan username tersebut.")
+    else:
+        print("Tidak ada jin dengan username tersebut.")
 
 
 def cetakjin(role):
@@ -44,7 +30,26 @@ def cetakjin(role):
             lenpass = len(password)
         print(f"Jin {username} berhasil didaftarkan")
         catat(username, password, role)
-    
+
+
+def summonjin():
+    if(cekisiarray(listuser) ==102):
+        print("Jumlah Jin telah maksimal! (100 jin). Bandung tidak dapat men-summon lebih dari itu")
+    else:
+        print("Jenis jin yang dapat dipanggil:")
+        print(" (1) Pengumpul - Bertugas mengumpulkan bahan bangunan")
+        print(" (2) Pembangun - Bertugas membangun candi")
+
+        pilihan = input("Masukkan nomor jenis jin yang ingin dipanggil: ")
+        if(pilihan == "1"):
+            role = "pengumpul"
+            cetakjin(role)
+        elif(pilihan == "2"):
+            role = "pembangun"
+            cetakjin(role)
+        else:
+            print(f"Tidak ada jenis jin bernomor {pilihan}!")
+
 def ubahjin():
     username = input("Masukkan username jin: ")
     if(usertersedia):
@@ -61,15 +66,14 @@ def ubahjin():
         print("Tidak ada jin dengan username tersebut.")
 
 def usertersedia(username):
-    global user
     for i in range (102):
-        if(username == user[i]):
+        if(username == listuser[i]):
             return False
     return True
 
 def catat(username, password, role):
     for i in range (102):
-        if(user[i] == ''):
+        if(listuser[i] == ''):
             listuser[i] = username
             listpassword[i] = password
             listrole[i] = role
@@ -84,7 +88,7 @@ def cekisiarray(arr):
 
 def hapususer(username):
     for i in range (102):
-        if(username == user[i]):
+        if(username == listuser[i]):
             listuser[i] = ''
             listpassword[i] = ''
             listrole[i] = ''
@@ -92,6 +96,11 @@ def hapususer(username):
         
 def cariidxuser(username):
     for i in range (102):
-        if(username == user[i]):
+        if(username == listuser[i]):
             return i
     return -1
+from csvparser import *
+# csvparse()
+# print(usertersedia("Roro"))
+# print(listuser[1])
+# # print(listuser)
