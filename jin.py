@@ -22,11 +22,11 @@ def cetakjin(role):
         print("Username sudah terdaftar!")
         return
     else:
-        password = input("Masukkan password jin:")
+        password = input("Masukkan password jin: ")
         lenpass = len(password)
         while(lenpass<5 or lenpass>25):
             print("password panjangnya harus 5-25 karakter!")
-            password = input("Masukkan password jin:")
+            password = input("Masukkan password jin: ")
             lenpass = len(password)
         print(f"Jin {username} berhasil didaftarkan")
         catat(username, password, role)
@@ -99,8 +99,3 @@ def cariidxuser(username):
         if(username == listuser[i]):
             return i
     return -1
-from csvparser import *
-# csvparse()
-# print(usertersedia("Roro"))
-# print(listuser[1])
-# # print(listuser)

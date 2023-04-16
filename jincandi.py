@@ -1,6 +1,7 @@
 from globalvar import *
-import globalvar2
+import globals
 from random import *
+from fungsicandi import *
 def kumpul():
     pasir = randint(0, 5)
     batu = randint(0, 5)
@@ -51,7 +52,7 @@ def bangun():
         else:
             idxkosong = caricandikosong()
             listcandi[idxkosong][0] = cariidkosong()
-            listcandi[idxkosong][1] = globalvar2.useractive
+            listcandi[idxkosong][1] = globals.useractive
             listcandi[idxkosong][2] = reqpasir
             listcandi[idxkosong][3] = reqbatu
             listcandi[idxkosong][4] = reqair
@@ -64,15 +65,14 @@ def bangun():
         print("Bahan bangunan tidak mencukupi")
         print("Candi gagal dibangun.")
 
-    print(globalvar2.useractive,"tes")
-    print(roleactive,"tes2")
-    print(listcandi)
+
+
 def batchbangun():
     if(cekjmlrole("pembangun") == 0):
         print("Tidak ada jin pembangun. Silahkan summon jin pembangun terlebih dahulu.")
     else:
         jmlpembangun = cekjmlrole("pembangun")
-        tempcandi = [['' for i in range(5)]for j in range(jmlpembangun)]
+        tempcandi = [['','',0,0,0]for j in range(jmlpembangun)]
         idx = 0
         jmlpasir = 0
         jmlbatu = 0
@@ -104,11 +104,19 @@ def batchbangun():
                 listcandi[idx] = tempcandi[i]
 
         else:
-            
+            if(jmlpasir - listbahan[0]<0):
+                kurangpasir = 0
+            else:
+                kurangpasir = jmlpasir - listbahan[0]
+            if(jmlbatu - listbahan[1]<0):
+                kurangbatu = 0
+            else:
+                kurangbatu = jmlbatu - listbahan[1]
+            if(jmlair - listbahan[2]<0):
+                kurangair = 0
             print(f"Memiliki {listbahan[0]} pasir, {listbahan[1]} batu, dan {listbahan[2]} air.")
-            print(f"Bangun gagal. Kurang { jmlpasir - listbahan[0]} pasir, {jmlbatu - listbahan[1]} batu, dan {jmlair - listbahan[2]} air.")
+            print(f"Bangun gagal. Kurang {kurangpasir} pasir, {kurangbatu} batu, dan {kurangair} air.")
             print("Jin gagal membangun candi.")
-        print(listcandi)
 
 def cekjmlrole(role):
     count = 0
@@ -126,7 +134,7 @@ def cekjmlcandi():
 
 def caricandikosong():
     for i in range (100):
-        if(listcandi[i][0] == ''):
+        if(listcandi[i][0] == 0):
             return i
     return -1
 
