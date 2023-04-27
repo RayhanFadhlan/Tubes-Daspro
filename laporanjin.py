@@ -4,18 +4,26 @@ def laporanjin():
     totaljin = 0
     totalpembangun = 0
     totalpengumpul = 0
+    
 
     for i in range(102):
         if(listrole[i] == 'pembangun'):
             totalpembangun+=1
         elif(listrole[i] == 'pengumpul'):
             totalpengumpul+=1
+
     totaljin = totalpembangun + totalpengumpul
-    leaderboard = [['',0]for j in range(totalpembangun)]
+
+    jincandi = sort(listcandi)
+    jumlahjincandi = countelementberbeda(jincandi)
+
+    
+    leaderboard = [['',0]for j in range(jumlahjincandi)]
     leaderboard = bikinarraypembangun(leaderboard)
-    leaderboard = sortpair(leaderboard,totalpembangun)
+    leaderboard = sortpair(leaderboard,jumlahjincandi)
+    print(leaderboard)
     jinterajin = leaderboard[0][0]
-    jintermalas = leaderboard[totalpembangun-1][0]
+    jintermalas = leaderboard[jumlahjincandi-1][0]
     jumlahpasir = listbahan[0]
     jumlahbatu = listbahan[1]
     jumlahair = listbahan[2]
@@ -33,7 +41,22 @@ def laporanjin():
     print(f"Jumlah batu: {jumlahbatu} unit")
     print(f"Jumlah air: {jumlahair} unit")
 
+def sort(listcandi):
+    for i in range (100):
+        for j in range (100):
+            if(listcandi[i][1]>listcandi[j][1]):
+                temp = listcandi[i]
+                listcandi[i] = listcandi[j]
+                listcandi[j] = temp
+    return listcandi
 
+def countelementberbeda(listcandi):
+    count = 0
+    for i in range (100):
+        if(listcandi[i][0]!=0):
+            if(listcandi[i][1]!=listcandi[i-1][1]):
+                count+=1
+    return count
 
 def countuser(username):
     count = 0
@@ -45,10 +68,11 @@ def countuser(username):
 def bikinarraypembangun(leaderboard):
     count = 0
     for i in range(102):
-        if(listrole[i] == 'pembangun'):
+        if(countuser(listuser[i])!=0 and listuser[i]!=""):
             leaderboard[count][0] = listuser[i]
             leaderboard[count][1] = countuser(listuser[i])
             count+=1
+            print(leaderboard)
     return leaderboard
 
 def sortpair(leaderboard,totalpembangun):
@@ -66,41 +90,3 @@ def sortpair(leaderboard,totalpembangun):
     return leaderboard
 
 
-
-# leaderboard = [['d',3],['a',1],['b',3],['c',3],['d',2]]
-# print(sortpair(leaderboard,4))
-
-def laporancandi():
-    hargamax = float('-inf')
-    hargamin = float('inf')
-    candimax = '-'
-    candimin = '-'
-    sumcandi = 0
-    sumpasir = 0
-    sumbatu = 0
-    sumair = 0
-
-    for i in range(100):
-        if(listcandi[i][0]!=''):
-            sumcandi+=1
-            sumpasir+=listcandi[i][2]
-            sumbatu+=listcandi[i][3]
-            sumair+=listcandi[i][4]
-            hargacandi = 10000*listcandi[i][2]+15000*listcandi[i][3]+7500*listcandi[i][4]
-            if(hargacandi>hargamax):
-                hargamax = hargacandi
-                candimax = listcandi[i][0]
-            if(hargacandi<hargamin):
-                hargamin = hargacandi
-                candimin = listcandi[i][0]
-    print(f"Total candi: {sumcandi}")
-    print(f"Total pasir yang digunakan: {sumpasir}")
-    print(f"Total batu yang digunakan: {sumbatu}")
-    print(f"Total air yang digunakan: {sumair}")
-    if(sumcandi==0):
-        print("ID Candi termahal: -")
-        print("ID Candi termurah: -")
-    else:
-        print(f"ID Candi termahal: {candimax} (Rp {hargamax:,}))")
-        print(f"ID Candi termurah: {candimin} (Rp {hargamin:,}))")
-        

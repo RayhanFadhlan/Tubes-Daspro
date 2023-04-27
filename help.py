@@ -6,11 +6,7 @@ def help():
         print("=========== HELP ===========")
         print("1. login") #Fungsi login
         print("   Untuk masuk menggunakan akun")
-        print("2. load") #Fungsi load
-        print("   memuat data yang sesuai dengan struktur data eksternal")
-        print("   Prosedur ini hanya akan dijalankan sekali saat pertama kali program dijalankan,")
-        print("   dengan cara memberikan parameter nama folder yang berisi file penyimpanan.")
-        print("3. save") #Fungsi save
+        print("2. save") #Fungsi save
         print("   untuk menjalankan prosedur menyimpan data yang berada di program sesuai dengan struktur data eksternal.")
         print("   Berikut ketentuan :")
         print("   -  Jika nama folder tidak ditemukan, program akan membuat folder sesuai dengan")
@@ -18,13 +14,13 @@ def help():
         print("   -  Jika nama folder sudah ada, program akan menaruh file baru pada folder tersebut")
         print("   -  Jika nama folder dan file sudah ada, program akan mengganti file pada folder tersebut")
         print("      dengan yang lebih baru dan tidak perlu memberikan pesan tambahan")
-        print("4. exit") #Fungsi exit
+        print("3. exit") #Fungsi exit
         print("   Untuk keluar dari program dan kembali ke terminal")
     if(globals.roleactive=="bandung_bondowoso"):
         print("=========== HELP ===========")
         print("1. logout")
         print("   Untuk keluar dari akun yang digunakan sekarang")
-        print("2. summon jin") #Fungsi Summon Jin
+        print("2. summonjin") #Fungsi Summon Jin
         print("   untuk memanggil jin")
         print("3. hapusjin") #Fungsi Hapus Jin
         print("   untuk menghapus jin")

@@ -12,7 +12,7 @@ def laporancandi():
     sumair = 0
 
     for i in range(100):
-        if(listcandi[i][0]!=''):
+        if(listcandi[i][0]!=0):
             sumcandi+=1
             sumpasir+=listcandi[i][2]
             sumbatu+=listcandi[i][3]

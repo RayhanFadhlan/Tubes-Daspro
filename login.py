@@ -1,4 +1,3 @@
-
 from globalvar import *
 import globals
 sudahlogin = False
@@ -30,13 +29,5 @@ def login():
         return
         
 
-def logout():
 
-    if(globals.sudahlogin==True):
-        globals.roleactive = False
-        globals.useractive = False
-        globals.sudahlogin = False
-    else:
-        print("Logout gagal!")
-        print("Anda belum login, silahkan login terlebih dahulu sebelum melakukan logout")
 
