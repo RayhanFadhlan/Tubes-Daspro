@@ -61,7 +61,10 @@ def batchbangun():
             listbahan[2] -= jmlair
             for i in range (jmlpembangun):
                 idx = caricandikosong()
-                listcandi[idx] = tempcandi[i]
+                if idx == -1:
+                    pass
+                else:
+                    listcandi[idx] = tempcandi[i]
 
         else:
             if(jmlpasir - listbahan[0]<0):
