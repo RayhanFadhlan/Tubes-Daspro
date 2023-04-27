@@ -1,19 +1,26 @@
 # File: main.py
 
 from login import *
-from csvparser import *
-from jin import *
-from globalvar import *
-from jincandi import *
+from logout import *
+from summonjin import *
+from hapusjin import *
+from ubahjin import *
+from bangun import *
+from kumpul import *
+from batch import *
 from laporanjin import *
 from laporancandi import *
-from roropower import *
+from hancurkancandi import *
+from ayamberkokok import *
+from load import *
+from save import *
 from help import *
 from exit import *
+from globalvar import *
 import sys
 import argparse
 import os
-
+import globals
 
 parser = argparse.ArgumentParser()
 parser.add_argument("namafolder", help="nama folder yang akan dibuat", type=str)
@@ -37,41 +44,53 @@ else:
 
 
 csvparse()
-# print(listuser,listpassword,listrole)
+
 while True:
   masukan = input(">>> ")
-
   if masukan == "login": 
     login()
   elif masukan == "logout":
     logout()
-  elif masukan == "summonjin":
-    summonjin()
-  elif masukan == "hapusjin":
-    hapusjin()
-  elif masukan == "ubahjin":
-    ubahjin()
-  elif masukan == "kumpul":
-    kumpul()
-  elif masukan == "bangun":
-    bangun()
-  elif masukan == "batchkumpul":
-    batchkumpul()
-  elif masukan == "batchbangun":
-    batchbangun()
-  elif masukan == "laporanjin":
-    laporanjin()
-  elif masukan == "laporancandi":
-    laporancandi()
-  elif masukan == "save":
-    save()
-  elif masukan == "ayamberkokok":
-    ayamberkokok()
-  elif masukan == "hancurkancandi":
-    hancurkancandi()
-  elif masukan == "tes":
-    print(listcandi)
   elif masukan == "help":
     help()
+  elif masukan == "save":
+    save()
   elif masukan == "exit":
     exit()
+  elif masukan == "tes":
+    print(sort(listcandi))
+    print("gblkkkkkkkkkk")
+    print(countelementberbeda(sort(listcandi)))
+    print(listuser)
+
+  elif globals.roleactive == "bandung_bondowoso":
+    if masukan == "logout":
+      logout()
+    elif masukan == "summonjin":
+      summonjin()
+    elif masukan == "hapusjin":
+      hapusjin()
+    elif masukan == "ubahjin":
+      ubahjin()
+    elif masukan == "batchkumpul":
+      batchkumpul()
+    elif masukan == "batchbangun":
+      batchbangun()
+    elif masukan == "laporanjin":
+      laporanjin()
+    elif masukan == "laporancandi":
+      laporancandi()
+
+  elif globals.roleactive == "roro_jonggrang":
+    if(masukan == "hancurkancandi"):
+      hancurkancandi()
+    elif(masukan == "ayamberkokok"):
+      ayamberkokok()
+
+  elif globals.roleactive == "pengumpul":
+    if(masukan == "kumpul"):
+      kumpul()
+  
+  elif globals.roleactive == "pembangun":
+    if(masukan == "bangun"):
+      bangun()
