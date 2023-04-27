@@ -8,6 +8,8 @@ from jincandi import *
 from laporanjin import *
 from laporancandi import *
 from roropower import *
+from help import *
+from exit import *
 import sys
 import argparse
 import os
@@ -38,7 +40,7 @@ csvparse()
 # print(listuser,listpassword,listrole)
 while True:
   masukan = input(">>> ")
-  # call a function on tubes.py based on masukan
+
   if masukan == "login": 
     login()
   elif masukan == "logout":
@@ -69,3 +71,7 @@ while True:
     hancurkancandi()
   elif masukan == "tes":
     print(listcandi)
+  elif masukan == "help":
+    help()
+  elif masukan == "exit":
+    exit()
