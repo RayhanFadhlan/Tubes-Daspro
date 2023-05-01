@@ -47,25 +47,25 @@ csvparse()
 
 while True:
   masukan = input(">>> ")
-  if masukan == "login": 
-    login()
-  elif masukan == "logout":
-    logout()
-  elif masukan == "help":
-    help()
-  elif masukan == "save":
-    save()
-  elif masukan == "exit":
-    exit()
-  elif masukan == "tes":
-    print(sort(listcandi))
-    print("gblkkkkkkkkkk")
-    print(countelementberbeda(sort(listcandi)))
-    print(listuser)
-
+  if globals.sudahlogin == False:
+    if masukan == "login": 
+      login()
+    elif masukan == "logout":
+      logout()
+    elif masukan == "help":
+      help()
+    elif masukan == "save":
+      save()
+    elif masukan == "exit":
+      exit()
+    else:
+      print("Command tidak tersedia! ketik 'help' untuk melihat daftar command yang dapat dipanggil")
+  
   elif globals.roleactive == "bandung_bondowoso":
     if masukan == "logout":
       logout()
+    elif masukan == "login":
+      login()
     elif masukan == "summonjin":
       summonjin()
     elif masukan == "hapusjin":
@@ -80,17 +80,58 @@ while True:
       laporanjin()
     elif masukan == "laporancandi":
       laporancandi()
-
+    elif masukan == "save":
+      save()
+    elif masukan == "exit":
+      exit()
+    elif masukan == "help":
+      help()
+    else:
+      print("Command tidak tersedia! ketik 'help' untuk melihat daftar command yang dapat dipanggil")
   elif globals.roleactive == "roro_jonggrang":
     if(masukan == "hancurkancandi"):
       hancurkancandi()
     elif(masukan == "ayamberkokok"):
       ayamberkokok()
-
+    elif masukan == "login":
+      login()
+    elif masukan == "logout":
+      logout()
+    elif masukan == "save":
+      save()
+    elif masukan == "exit":
+      exit()
+    elif masukan == "help":
+      help()     
+    else:
+      print("Command tidak tersedia! ketik 'help' untuk melihat daftar command yang dapat dipanggil")
   elif globals.roleactive == "pengumpul":
     if(masukan == "kumpul"):
       kumpul()
-  
+    elif masukan == "login":
+      login()
+    elif masukan == "logout":
+      logout()
+    elif masukan == "save":
+      save()
+    elif masukan == "exit":
+      exit()
+    elif masukan == "help":
+      help()      
+    else:
+      print("Command tidak tersedia! ketik 'help' untuk melihat daftar command yang dapat dipanggil")
   elif globals.roleactive == "pembangun":
     if(masukan == "bangun"):
       bangun()
+    elif masukan == "login":
+      login()
+    elif masukan == "logout":
+      logout()
+    elif masukan == "save":
+      save()
+    elif masukan == "exit":
+      exit()
+    elif masukan == "help":
+      help()
+    else:
+      print("Command tidak tersedia! ketik 'help' untuk melihat daftar command yang dapat dipanggil")
