@@ -77,6 +77,8 @@ def batchbangun():
                 kurangbatu = jmlbatu - listbahan[1]
             if(jmlair - listbahan[2]<0):
                 kurangair = 0
+            else:
+                kurangair = jmlair - listbahan[2]
             print(f"Memiliki {listbahan[0]} pasir, {listbahan[1]} batu, dan {listbahan[2]} air.")
             print(f"Bangun gagal. Kurang {kurangpasir} pasir, {kurangbatu} batu, dan {kurangair} air.")
             print("Jin gagal membangun candi.")
