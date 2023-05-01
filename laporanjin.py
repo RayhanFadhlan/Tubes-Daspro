@@ -16,21 +16,20 @@ def laporanjin():
 
     jincandi = sort(listcandi)
     jumlahjincandi = countelementberbeda(jincandi)
-
-    
-    leaderboard = [['',0]for j in range(jumlahjincandi)]
-    leaderboard = bikinarraypembangun(leaderboard)
-    leaderboard = sortpair(leaderboard,jumlahjincandi)
-    print(leaderboard)
-    jinterajin = leaderboard[0][0]
-    jintermalas = leaderboard[jumlahjincandi-1][0]
+    if(jumlahjincandi==0):
+        jinterajin = "-"
+        jintermalas = "-"
+    else:
+        
+        leaderboard = [['',0]for j in range(jumlahjincandi)]
+        leaderboard = bikinarraypembangun(leaderboard)
+        leaderboard = sortpair(leaderboard,jumlahjincandi)
+        jinterajin = leaderboard[0][0]
+        jintermalas = leaderboard[jumlahjincandi-1][0]
     jumlahpasir = listbahan[0]
     jumlahbatu = listbahan[1]
     jumlahair = listbahan[2]
 
-    if(leaderboard==[[]]or leaderboard[0][1]==0):
-        jinterajin = "-"
-        jintermalas = "-"
 
     print(f"Total Jin: {totaljin}")
     print(f"Total Jin Pengumpul: {totalpengumpul}")
@@ -52,11 +51,14 @@ def sort(listcandi):
 
 def countelementberbeda(listcandi):
     count = 0
-    for i in range (100):
-        if(listcandi[i][0]!=0):
-            if(listcandi[i][1]!=listcandi[i-1][1]):
-                count+=1
-    return count
+    if(listcandi[0][0]==0):
+        return 0
+    else:
+        for i in range (1,100):
+            if(listcandi[i][0]!=0):
+                if(listcandi[i][1]!=listcandi[i-1][1]):
+                    count+=1
+    return count+1
 
 def countuser(username):
     count = 0
@@ -72,7 +74,6 @@ def bikinarraypembangun(leaderboard):
             leaderboard[count][0] = listuser[i]
             leaderboard[count][1] = countuser(listuser[i])
             count+=1
-            print(leaderboard)
     return leaderboard
 
 def sortpair(leaderboard,totalpembangun):

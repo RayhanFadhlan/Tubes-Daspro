@@ -55,17 +55,19 @@ def batchbangun():
 
         print(f"Mengerahkan {jmlpembangun} jin pembangun untuk membangun candi dengan total {jmlpasir} pasir, {jmlbatu} batu, dan {jmlair} air.")
         if(listbahan[0] >= jmlpasir and listbahan[1] >= jmlbatu and listbahan[2] >= jmlair):
-            print(f"Jin berhasil membangun {jmlpembangun} candi.")
+            
             listbahan[0] -= jmlpasir
             listbahan[1] -= jmlbatu
             listbahan[2] -= jmlair
+            candifull = 0
             for i in range (jmlpembangun):
                 idx = caricandikosong()
                 if idx == -1:
-                    pass
+                    candifull+=1
                 else:
                     listcandi[idx] = tempcandi[i]
-
+            print(f"Jin berhasil membangun {jmlpembangun - candifull} candi.")
+            print(f"Sisa candi yang perlu dibangun: {100-cekjmlcandi()}")
         else:
             if(jmlpasir - listbahan[0]<0):
                 kurangpasir = 0
@@ -109,7 +111,7 @@ def caricandikosong():
     return -1
 
 
-def cariidkosongtwithtemp(tempcandi,jmlpembangun):
+def cariidkosongtwithtemp(tempcandi,jmlpembangun): # mencari id kosong untuk tempcandi
     for i in range(1,101):
         nemu = False
         for j in range (100):
@@ -122,3 +124,10 @@ def cariidkosongtwithtemp(tempcandi,jmlpembangun):
                 break
         if(nemu == False):
             return i
+
+def cekjmlcandi():
+    count = 0
+    for i in range (100):
+        if(listcandi[i][0] != 0):
+            count+=1
+    return count

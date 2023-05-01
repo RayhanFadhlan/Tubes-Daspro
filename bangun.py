@@ -11,7 +11,7 @@ def bangun():
         listbahan[0] -= reqpasir
         listbahan[1] -= reqbatu
         listbahan[2] -= reqair
-        if(cekjmlcandi==100):
+        if(cekjmlcandi==100): #jika jml sudah 100 maka candi tidak dicatat di array
             pass
         else:
             idxkosong = caricandikosong()
