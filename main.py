@@ -22,6 +22,7 @@ import argparse
 import os
 import globals
 
+# Fungsi load dijalankan ketika program pertama kali dijalankan
 parser = argparse.ArgumentParser()
 parser.add_argument("namafolder", help="nama folder yang akan dibuat", type=str)
 if len(sys.argv)==1:
@@ -42,7 +43,7 @@ else:
   sys.exit(1)
 
 
-
+# csvparse untuk mengubah csv ke array
 csvparse()
 
 while True:
